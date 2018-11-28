@@ -1,0 +1,101 @@
+#include <iostream>
+#include <string>
+#include <math.h>
+
+
+class A
+{
+public:
+
+int cycle( int entier)
+{   bool needCheck = check(entier);
+    int alpha = 1;
+
+    if(needCheck)
+    {
+    for(int i = 0; i<100000000; i++)
+    {
+        if(pow(alpha, entier) == 0)
+            break;
+        else
+            //std::cout << "cycle :"<< alpha <<" entier :"<< entier << "!\n";
+            alpha ++ ;
+    }
+    }
+    std::cout << alpha << "!\n";
+    return alpha;
+}
+
+long long int pow10(int alpha)
+{
+    long long int result = 1;
+    if(alpha !=0){
+    for(int i =0; i< alpha ; i++)
+    {
+        result = result*10;
+    }
+    }
+    return result;
+}
+
+long long int divise(long long int nombre, int entier)
+{
+ long long int result = nombre;
+ if(nombre >=  entier)
+ {
+   result = nombre%entier;
+ }
+ return result;
+}
+long long int pow( int alpha, int entier )
+{
+
+        int quotien = alpha/9;
+        int reste = alpha%9;
+        long long int Reste = 1;
+
+        if(quotien !=0){
+        for( int count = 0 ; count < quotien ; count++ )
+        {
+            Reste =divise( Reste * (pow10(9)%entier), entier);
+        }
+        }
+        Reste=divise(Reste*(pow10(reste)%entier), entier);
+    return (Reste-1)%entier;
+}
+
+void maxcycle(int entier , int& max)
+{
+    int a = cycle(entier);
+    if( a > max)
+    {
+        max = a;
+    }
+    std::cout << max << "!\n";
+}
+
+bool check(int entier)
+{
+    bool result = true;
+
+    if( entier%5 == 0 || entier%2== 0  )
+      { result = false;}
+
+      return result;
+}
+
+};
+
+int main()
+{
+  A a;
+  int alpha =0; //  a.cycle(179);
+  for(int i = 1; i<1000; i++)
+  {
+      a.maxcycle(i,alpha);
+      std::cout << "entier : " << i << "!\n";
+  }
+  std::cout << "cycle, " << alpha << "!\n";
+}
+
+
