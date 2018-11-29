@@ -95,7 +95,7 @@ int main()
       a.maxcycle(i,alpha);
       std::cout << "entier : " << i << "!\n";
   }
-  std::cout << "cycle, " << alpha << "!\n";
+  std::cout << "cycle, " << alpha +1 << "!\n";
 }
 
 
