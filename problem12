@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+
+class A
+{
+ public:
+bool isPrime(long long int nr) {
+    if (nr < 3) return nr == 2;
+    if (nr % 2 == 0) return false;
+    for (int i = 3; i * i <= nr; i += 2)  // or calc sqnr = sqrt(nr) and use i <= sqnr
+        if (nr % i == 0)
+            return false;
+    return true;
+}
+
+int NextPrime(long long int a)
+{
+
+    while (!isPrime(++a))
+    { }
+    return a;
+}
+
+int nombreDeDiviseur( int entier)
+{
+  int a = 1;
+  for( int i = 2; entier!=1; i=NextPrime(i) )
+  {
+    int b =0;
+    while(entier%i == 0)
+    {
+     b= b+1;
+     entier = entier/i ;
+    }
+    
+    a = a*(b+1);
+  }
+  return a;
+}
+
+};
+int main()
+{
+    A a;
+   int entier = 0 ;
+   int d=0; // nbre de diviseur de n*(n+1)/2
+  for(int i = 2; d < 500 ; i++ )
+  {
+    i%2==0? d= (a.nombreDeDiviseur(i/2)*a.nombreDeDiviseur(i+1)-1) : d=(a.nombreDeDiviseur(i)*a.nombreDeDiviseur((i+1)/2)-1);
+    entier = i;
+  }
+
+
+  std::cout << "entier : " << entier << "!\n";
+}
