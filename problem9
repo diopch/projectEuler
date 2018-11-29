@@ -1,0 +1,16 @@
+#include <iostream>
+#include <string>
+
+int main()
+{
+  
+  for( int c = 250; c < 500; c++ )
+  {
+    for(int b =251; b<c ; b++ )
+    {
+        if(1000*(500-c) == b* (1000-b-c))
+          std::cout << "result : " << c*b*(1000-b-c) << "!\n";
+    }
+  }
+
+}
