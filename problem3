@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+
+class A
+{
+ public:
+bool isPrime(long long int nr) {
+    if (nr < 3) return nr == 2;
+    if (nr % 2 == 0) return false;
+    for (int i = 3; i * i <= nr; i += 2)  // or calc sqnr = sqrt(nr) and use i <= sqnr
+        if (nr % i == 0)
+            return false;
+    return true;
+}
+
+int NextPrime(long long int a)
+{
+
+    while (!isPrime(++a))
+    { }
+    return a;
+std::cout << "prime : " << a << "!\n";
+
+}
+
+};
+int main()
+{
+    A a;
+  long long int entier = 600851475143 ;
+  long long int  result = 1;
+  for(long long int i = 2; i < entier+1; i= a.NextPrime(i))
+  {
+      if(entier%i == 0 && result < i )
+      {
+           result = i ;
+          entier = entier/i;
+      }
+  }
+
+  std::cout << "result : " << result << "!\n";
+}
