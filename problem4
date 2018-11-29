@@ -37,13 +37,13 @@ int main()
     int p = 0;
     for(int i = 100; i<1000; i++)
     {
-    for(int j = 100; j<1000; i++)
-    {
-     if(a.palindrome6(i*j))
-      {
-        a.max(p,i*j);
-      }
-    }
+        for(int j = 100; j<1000; j++)
+        {
+         if(a.palindrome6(i*j))
+          {
+            a.max(p,i*j);
+          }
+        }
     }
   
   std::cout << "palindrome final :" << p << "!\n";
