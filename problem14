@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+#include <vector>
+class A
+{
+ public:
+int collatz ( int entier, std::vector<int>& v)
+{
+// std::cout << "entier1 collatz : " << entier  << "!\n";
+ int result = 1;
+ while(entier != 1)
+ { if(v.size()+1 >entier)
+       {
+        // std::cout << "v entier : " << v[entier]  << "!\n";
+         result = result+v[entier-1];
+         break;
+       }
+   result = result + 1;
+   if(entier%2==0)
+     entier=entier/2;
+   else
+     entier= 3*entier+1;
+ }
+//v.push_back(result);
+//std::cout << "entier2 collatz : " << entier  << "!\n";
+//std::cout << "result collatz : " << result  << "!\n";
+return result;
+}
+
+void max(int& entier , int num)
+{
+  if(num>entier)
+   {
+   entier = num;
+   std::cout << "result : " << entier  << "!\n";
+   }
+}
+};
+int main()
+{
+    A a;
+  int result = 0  ;
+  std::vector<int> v;
+  int entier = a.collatz(113383, v);
+//   for(int i = 1; i < 1000000; i++ )
+//   {
+//     int b = result;
+//     std::cout << "entier boucle : " << i  << "!\n";
+//     a.max(result,a.collatz(i, v));
+//     if(result != b)
+//      entier = i;
+//   }
+
+  std::cout << "entier : " << entier << "!\n";
+}
