@@ -4,10 +4,10 @@
 class A
 {
  public:
-int collatz ( int entier, std::vector<int>& v)
+long long int collatz ( long long int entier, std::vector<long long int>& v)
 {
 // std::cout << "entier1 collatz : " << entier  << "!\n";
- int result = 1;
+ long long int result = 1;
  while(entier != 1)
  { if(v.size()+1 >entier)
        {
@@ -27,29 +27,29 @@ int collatz ( int entier, std::vector<int>& v)
 return result;
 }
 
-void max(int& entier , int num)
+void max(long long int& entier , long long int num)
 {
   if(num>entier)
    {
    entier = num;
-   std::cout << "result : " << entier  << "!\n";
+   //std::cout << "result : " << entier  << "!\n";
    }
 }
 };
 int main()
 {
     A a;
-  int result = 0  ;
-  std::vector<int> v;
-  int entier = a.collatz(113383, v);
-//   for(int i = 1; i < 1000000; i++ )
-//   {
-//     int b = result;
-//     std::cout << "entier boucle : " << i  << "!\n";
-//     a.max(result,a.collatz(i, v));
-//     if(result != b)
-//      entier = i;
-//   }
+  long long int result = 0  ;
+  std::vector<long long int> v;
+  long long int entier = 1;
+  for(int i = 1; i < 1000000; i++ )
+  {
+    int b = result;
+    //std::cout << "entier boucle : " << i  << "!\n";
+    a.max(result,a.collatz(i, v));
+    if(result != b)
+     entier = i;
+  }
 
   std::cout << "entier : " << entier << "!\n";
 }
